@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  api:
+    build:
+      context: .
+      dockerfile: .docker/local/Dockerfile
+    image: lmelati/curso-nodejs
+    environment:
+      - NODE_ENV=development
+    ports:
+      - 3000:3000
+    links:
+      - mongodb
+  mongodb:
+    image: mongo:latest
+    ports:
+      - 27017:27017
